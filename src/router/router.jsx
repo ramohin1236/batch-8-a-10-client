@@ -3,14 +3,16 @@ import Home from './../Components/Home';
 import InitialPage from "../Components/Initial/InitialPage";
 import LayOut from "../Components/Layout/LayOut";
 import AddProduct from "../Components/Add product/AddProduct";
+import Mycart from "../Components/Mycart/Mycart";
+import Login from "../Components/Login/Login";
 
 
 
 export const router = createBrowserRouter([
-    // {
-    //   path: "/",
-    //   element: <InitialPage/>,
-    // },
+    {
+      path: "/",
+      element: <InitialPage/>,
+    },
     {
       path: "/layout",
       element: <LayOut/>,
@@ -25,11 +27,11 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/cart",
-            element:<AddProduct/>
+            element:<Mycart/>
         },
         {
             path: "/layout/login",
-            element:<AddProduct/>
+            element:<Login/>
         },
       ]
     },

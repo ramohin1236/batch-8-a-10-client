@@ -3,7 +3,7 @@
 const Login = () => {
     return (
         <div>
-            <p>Login</p>
+            <h1>Login</h1>
         </div>
     );
 };
