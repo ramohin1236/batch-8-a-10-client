@@ -14,7 +14,7 @@ Explore our website to discover our latest models, learn about our history, and 
 
 Start your journey today!</p>
            <Link to='/layout'>
-           <button className="btn btn-primary">Let's Have a journey</button>
+           <button className="btn btn-primary">Lets Have a journey</button>
            </Link>
        
           </div>
