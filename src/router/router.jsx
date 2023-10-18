@@ -20,6 +20,7 @@ export const router = createBrowserRouter([
         {
             path: "/layout",
             element:<Home/>
+           
         },
         {
             path: "/layout/add",

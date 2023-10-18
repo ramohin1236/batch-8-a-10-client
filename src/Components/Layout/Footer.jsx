@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className="footer p-10 bg-neutral text-neutral-content">
         <aside>
-         <Link to='/layout'> <img className="w-16" src="/public/logo.jpg" alt="" /> </Link>
+         <Link to='/layout'> <img className="w-16 rounded-full " src="/public/logo.jpg" alt="" /> </Link>
           <p>Automotive Motors<br/>Providing reliable tech since 2023</p>
         </aside> 
         <nav>

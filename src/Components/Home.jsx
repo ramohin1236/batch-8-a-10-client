@@ -1,9 +1,11 @@
+import Product from "./Product/Product";
 
 
 const Home = () => {
     return (
         <div>
-            <h1>This is hoome</h1>
+            
+            <Product/>
         </div>
     );
 };

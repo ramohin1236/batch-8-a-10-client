@@ -1,9 +1,56 @@
+import Swal from "sweetalert2";
 
 
 const AddProduct = () => {
+
+    const handleSubmit=(e)=>{
+       e.preventDefault()
+       const form= e.target;
+       const productName = form.productName.value;
+       const productBrand = form.brand.value;
+       const productType = form.type.value;
+       const productPrice = form.price.value;
+       const productDescription = form.description.value;
+       const productRatings = form.ratings.value;
+       const productURL1 = form.photo1.value;
+       const productURL2 = form.photo2.value;
+       const productURL3 = form.photo3.value;
+       const productURL4 = form.photo4.value;
+
+       const info ={productName,productBrand,productType,productPrice,productDescription,productRatings,productURL1,productURL2,productURL3,productURL4}
+
+     console.log(info)
+
+
+     fetch('http://localhost:5000/product',{
+        method:'POST',
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify(info)
+     })
+     .then(res=>res.json())
+     .then(data=>{
+        console.log(data);
+        if(data.insertedId){
+            Swal.fire({
+                title: 'Product Successfully Added!',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+        }
+      
+     })
+
+    }
     return (
      <div className="bg-slate-100">
-           <div className="container mx-auto p-16">
+         <form  className="container mx-auto p-6" onSubmit={handleSubmit}>
+              <div>
             {/* name and brand input here */}
             <div className="md:flex justify-evenly max-sm:ml-4 max-sm:mr-4 ">
                 <div>
@@ -13,7 +60,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>Product</span>
-                            <input type="text" placeholder="Name here..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                            name="productName"
+                            placeholder="Name here..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -24,7 +73,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>Brand</span>
-                            <input type="text" placeholder="Brand here..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                            name="brand"
+                            placeholder="Brand here..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -38,7 +89,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>Type</span>
-                            <input type="text" placeholder="Product type..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                            name="type"
+                            placeholder="Product type..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -49,7 +102,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>BDT</span>
-                            <input type="text" placeholder="Enter product Price..." className="input input-bordered lg:w-96" />
+                            <input type="text"
+                            name="price"
+                            placeholder="Enter product Price..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -63,7 +118,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>Description</span>
-                            <input type="text" placeholder="Product cescription..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                            name="description"
+                            placeholder="Product cescription..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -74,7 +131,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>Ratings</span>
-                            <input type="text" placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                            name="ratings"
+                            placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -88,7 +147,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>URL-1</span>
-                            <input type="text" placeholder="Product picture..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                            name="photo1"
+                            placeholder="Product picture..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -99,7 +160,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>URL-2</span>
-                            <input type="text" placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                              name="photo2"
+                            placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                 </div>
@@ -113,7 +176,9 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>URL-3</span>
-                            <input type="text" placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                             name="photo3"
+                            placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                     <div className="form-control">
@@ -122,12 +187,20 @@ const AddProduct = () => {
                         </label>
                         <label className="input-group input-group-vertical">
                             <span>URL-4</span>
-                            <input type="text" placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
+                            <input type="text" 
+                             name="photo4"
+                            placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
                    </div>
                 </div>
         </div>
+     <div className="text-center mt-10">
+     <input className="w-96  btn btn-outline" type="submit" value="submit" />
+     </div>
+         </form>
+
+        
      </div>
     );
 };
