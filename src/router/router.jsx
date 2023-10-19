@@ -13,6 +13,7 @@ import Yamaha from "../Components/Brand/Yamaha/Yamaha";
 import Honda from "../Components/Brand/Honda/Honda";
 import BmwDetails from "../Components/Brand/Bmw/BmwDetails";
 import Registration from "../Components/Login/Registration";
+import Privateroute from "./Privateroute";
 
 
 
@@ -32,11 +33,11 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/add",
-            element:<AddProduct/>
+            element:<Privateroute><AddProduct/></Privateroute>
         },
         {
             path: "/layout/cart",
-            element:<Mycart/>
+            element:<Privateroute><Mycart/></Privateroute>
         },
         {
             path: "/layout/login",
@@ -48,12 +49,12 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/BMW",
-            element:<Bmw/>,
+            element:<Privateroute><Bmw/></Privateroute>,
             loader: ()=>fetch("http://localhost:5000/brand")
         },
         {
             path: "/layout/BMW/:id",
-            element:<BmwDetails/>,
+            element:<Privateroute><BmwDetails/></Privateroute>,
             loader: ({params})=>fetch(`http://localhost:5000/layout/bmw/${params.id}`)
         },
         {
@@ -62,12 +63,12 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/TOYOYTA",
-            element:<Toyota/>,
+            element:<Privateroute><Toyota/></Privateroute>,
             loader: ()=>fetch("http://localhost:5000/brand")
         },
         {
             path: "/layout/TOYOYTA/:id",
-            element:<Toyota/>,
+            element:<Privateroute><Toyota/></Privateroute>,
             loader: ({params})=>fetch(`http://localhost:5000/layout/TOYOYTA/${params.id}`)
         },
         {

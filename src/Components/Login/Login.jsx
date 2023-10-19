@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import AuthContext, { FirebaseAuthContext } from "../AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
@@ -11,6 +11,8 @@ const Login = () => {
     const {loginUser,googleSignUp}=useContext(FirebaseAuthContext)
     const [error,setError]=useState('')
     const [success,setSuccess]=useState('')
+    const location=useLocation()
+    const navigate=useNavigate()
 
     const handleLogin =(e)=>{
         e.preventDefault()
@@ -30,7 +32,7 @@ const Login = () => {
               ))
 
               e.target.reset()
-            //   navigate(location?.state?location.state : "/" )
+              navigate(location?.state?location.state : "/" )
               console.log(result)
         })
         .catch((error) => {
@@ -57,7 +59,7 @@ const Login = () => {
                     'Successfully Login!',
                    
                   ))
-                //   navigate(location?.state?location.state : "/" )
+                  navigate(location?.state?location.state : "/" )
     
                 console.log(result.user)
             }) 
