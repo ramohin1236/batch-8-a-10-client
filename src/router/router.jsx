@@ -12,6 +12,7 @@ import Marcedes from "../Components/Brand/Marcedes/Marcedes";
 import Yamaha from "../Components/Brand/Yamaha/Yamaha";
 import Honda from "../Components/Brand/Honda/Honda";
 import BmwDetails from "../Components/Brand/Bmw/BmwDetails";
+import Registration from "../Components/Login/Registration";
 
 
 
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
         {
             path: "/layout/login",
             element:<Login/>
+        },
+        {
+            path: "/layout/rgs",
+            element:<Registration/>
         },
         {
             path: "/layout/BMW",

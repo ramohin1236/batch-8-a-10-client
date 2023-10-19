@@ -1,8 +1,22 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { FirebaseAuthContext } from "../AuthContext/AuthContext";
 
 
 
 const Navbar = () => {
+
+
+    const {user,logOut}= useContext(FirebaseAuthContext)
+    const handleLogOut=()=>{
+        logOut()
+        .then(() => {
+           
+          }).catch(() => {
+            
+          });
+    }
+
     const nav= <>
     <NavLink  to="/layout"
                className={({isActive, isPending})=>
@@ -16,10 +30,18 @@ const Navbar = () => {
              className={({isActive, isPending})=>
              isPending ? "pending" : isActive ? "text-white bg-purple-500 rounded-lg" : ""
              }> <button className="m-2 btn"> My Cart</button> </NavLink>
-    <NavLink  to="/layout/login"
+           
+           {user? 
+           <>
+           <button onClick={handleLogOut} className="btn">Logout</button>
+           </>: 
+           <>
+ <NavLink  to="/layout/login"
              className={({isActive, isPending})=>
              isPending ? "pending" : isActive ? "text-white bg-purple-500 rounded-lg" : ""
              }> <button className="m-2 btn">Login</button> </NavLink>
+           </>}
+           
     </>
     return (
         <div className="navbar bg-slate-100 shadow-2xl">

@@ -153,6 +153,9 @@ const AddProduct = () => {
      </div>
          </form>
 
+
+         
+
         <h2 className="text-4xl font-bold text-center mt-20 mb-8">Add brand Product</h2>
         <form  className="container mx-auto p-6" onSubmit={handleBrandSubmit}>
               <div>
