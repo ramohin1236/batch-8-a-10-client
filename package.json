@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "aos": "^2.3.4",
+    "font-awesome": "^4.7.0",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",
     "match-sorter": "^6.3.1",
@@ -19,7 +21,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
     "sort-by": "^1.2.0",
-    "sweetalert2": "^11.7.32"
+    "sweetalert2": "^11.7.32",
+    "swiper": "^10.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

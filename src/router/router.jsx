@@ -5,6 +5,13 @@ import LayOut from "../Components/Layout/LayOut";
 import AddProduct from "../Components/Add product/AddProduct";
 import Mycart from "../Components/Mycart/Mycart";
 import Login from "../Components/Login/Login";
+import Bmw from "../Components/Brand/Bmw/Bmw";
+import Tesla from "../Components/Brand/Tesla/Tesla";
+import Toyota from "../Components/Brand/Toyota/Toyota";
+import Marcedes from "../Components/Brand/Marcedes/Marcedes";
+import Yamaha from "../Components/Brand/Yamaha/Yamaha";
+import Honda from "../Components/Brand/Honda/Honda";
+import BmwDetails from "../Components/Brand/Bmw/BmwDetails";
 
 
 
@@ -33,6 +40,36 @@ export const router = createBrowserRouter([
         {
             path: "/layout/login",
             element:<Login/>
+        },
+        {
+            path: "/layout/BMW",
+            element:<Bmw/>,
+            loader: ()=>fetch("http://localhost:5000/brand")
+        },
+        {
+            path: "/layout/BMW/:details",
+            element:<BmwDetails/>,
+            loader: (params)=>fetch(`http://localhost:5000/brand/${params._id}`)
+        },
+        {
+            path: "/layout/tesla",
+            element:<Tesla/>
+        },
+        {
+            path: "/layout/TOYOYTA",
+            element:<Toyota/>
+        },
+        {
+            path: "/layout/MERCEDES-BENZ",
+            element:<Marcedes/>
+        },
+        {
+            path: "/layout/yamaha",
+            element:<Yamaha/>
+        },
+        {
+            path: "/layout/honda",
+            element:<Honda/>
         },
       ]
     },
