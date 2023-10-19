@@ -50,20 +50,12 @@ console.log(selectedBmw)
           <img className="w-full h-[540px] rounded-xl" src={car.productURL1} />
         </SwiperSlide>)}
         
-        {/* <SwiperSlide>
-          <img className="w-full h-96" src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full h-96" src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full h-96" src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide> */}
+      
       </Swiper>
     </div>
 
 <div className="mt-24 space-y-12">
-{/* {selectedBmw.productBrand} */}
+
 <p className="text-center font-bold text-5xl">BMW</p>
     {
 

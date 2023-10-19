@@ -1,8 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 
 
-const BmwDetails = () => {
-   
+const ToyotaDetails = () => {
 
     const bmwData= useLoaderData()
     console.log(bmwData)
@@ -42,4 +41,4 @@ const BmwDetails = () => {
     );
 };
 
-export default BmwDetails;
+export default ToyotaDetails;

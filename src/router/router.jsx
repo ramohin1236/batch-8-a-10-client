@@ -57,7 +57,13 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/TOYOYTA",
-            element:<Toyota/>
+            element:<Toyota/>,
+            loader: ()=>fetch("http://localhost:5000/brand")
+        },
+        {
+            path: "/layout/TOYOYTA/:id",
+            element:<Toyota/>,
+            loader: ({params})=>fetch(`http://localhost:5000/layout/TOYOYTA/${params.id}`)
         },
         {
             path: "/layout/MERCEDES-BENZ",
