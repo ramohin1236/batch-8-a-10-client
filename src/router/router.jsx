@@ -47,9 +47,9 @@ export const router = createBrowserRouter([
             loader: ()=>fetch("http://localhost:5000/brand")
         },
         {
-            path: "/layout/BMW/:details",
+            path: "/layout/BMW/:id",
             element:<BmwDetails/>,
-            loader: (params)=>fetch(`http://localhost:5000/brand/${params._id}`)
+            loader: ({params})=>fetch(`http://localhost:5000/layout/bmw/${params.id}`)
         },
         {
             path: "/layout/tesla",
