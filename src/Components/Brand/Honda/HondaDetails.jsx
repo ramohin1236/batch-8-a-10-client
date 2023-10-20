@@ -8,7 +8,7 @@ const HondaDetails = () => {
 
     const handleBuycar=(e)=>{
         e.preventDefault()
-        fetch('http://localhost:5000/buycar',{
+        fetch('https://my-server-eykbfkwhc-ramohin1236.vercel.app/buycar',{
             method: "POST",
             headers:{
                "content-type":"application/json"
