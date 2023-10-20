@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const ToyataCArt = ({toyota}) => {
-    const{_id,productName,productURL1,productRatings,productDescription} =toyota
+const YamahaCart = ({yamaha}) => {
+    const{_id,productName,productURL1,productRatings,productDescription} = yamaha
     return (
         <div>
         {/* <h1>Brands:{productBrand}</h1> */}
@@ -28,7 +28,7 @@ const ToyataCArt = ({toyota}) => {
  productDescription.length > 100 ? productDescription.slice(0,250) : productDescription
 }</h2>
     <div className="card-actions justify-end">
-   <Link to={`/layout/TOYOYTA/${_id}`}>
+   <Link to={`/layout/yamaha/${_id}`}>
    <button className="btn btn-outline fa-solid fa-eye"></button>
    </Link>
     </div>
@@ -41,13 +41,8 @@ const ToyataCArt = ({toyota}) => {
 
 
 
-
-
-
-
-
-ToyataCArt.propTypes = {
-    toyota : PropTypes.object
+YamahaCart.propTypes = {
+    yamaha : PropTypes.object
      }
 
-export default ToyataCArt;
+export default YamahaCart;

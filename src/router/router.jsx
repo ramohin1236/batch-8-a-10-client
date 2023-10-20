@@ -15,6 +15,10 @@ import BmwDetails from "../Components/Brand/Bmw/BmwDetails";
 import Registration from "../Components/Login/Registration";
 import Privateroute from "./Privateroute";
 import TeslaDetails from "../Components/Brand/Tesla/TeslaDetails";
+import MarcedesDetails from "../Components/Brand/Marcedes/MarcedesDetails";
+import ToyotaDetails from './../Components/Brand/Toyota/ToyotaDetails';
+import HondaDetails from "../Components/Brand/Honda/HondaDetails";
+import YamahaDetails from "../Components/Brand/Yamaha/YamahaDetails";
 
 
 
@@ -75,20 +79,39 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/TOYOYTA/:id",
-            element:<Privateroute><Toyota/></Privateroute>,
+            element:<Privateroute><ToyotaDetails/></Privateroute>,
             loader: ({params})=>fetch(`http://localhost:5000/layout/TOYOYTA/${params.id}`)
         },
         {
             path: "/layout/MERCEDES-BENZ",
-            element:<Marcedes/>
+            element:<Privateroute><Marcedes/></Privateroute>,
+            loader: ()=>fetch("http://localhost:5000/brand")
+        },
+        {
+            path: "/layout/mar/:id",
+            element:<Privateroute><MarcedesDetails/></Privateroute>,
+            loader: ({params})=>fetch(`http://localhost:5000/layout/mar/${params.id}`)
         },
         {
             path: "/layout/yamaha",
-            element:<Yamaha/>
+            element:<Yamaha/>,
+            loader: ()=>fetch("http://localhost:5000/brand")
+
+        },
+        {
+            path: "/layout/yamaha/:id",
+            element:<Privateroute><YamahaDetails/></Privateroute>,
+            loader: ({params})=>fetch(`http://localhost:5000/layout/yamaha/${params.id}`)
         },
         {
             path: "/layout/honda",
-            element:<Honda/>
+            element:<Privateroute><Honda/></Privateroute>,
+            loader: ()=>fetch("http://localhost:5000/brand")
+        },
+        {
+            path: "/layout/honda/:id",
+            element:<Privateroute><HondaDetails/></Privateroute>,
+            loader: ({params})=>fetch(`http://localhost:5000/layout/bmw/${params.id}`)
         },
       ]
     },

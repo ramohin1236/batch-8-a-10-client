@@ -1,11 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 
 
-const ToyotaDetails = () => {
+const YamahaDetails = () => {
 
-    const toyotaData= useLoaderData()
-    console.log(toyotaData)
-   const {productURL1,productURL2,productURL3,productName,productPrice,productType,productDescription}=toyotaData
+    
+    const yamahaData= useLoaderData()
+  
+   const {productURL1,productURL2,productURL3,productName,productPrice,productType,productDescription}=yamahaData
 
     return (
         <div className="container mx-auto ">
@@ -41,4 +42,4 @@ const ToyotaDetails = () => {
     );
 };
 
-export default ToyotaDetails;
+export default YamahaDetails;
