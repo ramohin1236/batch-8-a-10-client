@@ -14,6 +14,7 @@ import Honda from "../Components/Brand/Honda/Honda";
 import BmwDetails from "../Components/Brand/Bmw/BmwDetails";
 import Registration from "../Components/Login/Registration";
 import Privateroute from "./Privateroute";
+import TeslaDetails from "../Components/Brand/Tesla/TeslaDetails";
 
 
 
@@ -59,7 +60,13 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/tesla",
-            element:<Tesla/>
+            element:<Tesla/>,
+            loader: ()=>fetch("http://localhost:5000/brand")
+        },
+        {
+            path: "/layout/tesla/:id",
+            element:<Privateroute><TeslaDetails/></Privateroute>,
+            loader: ({params})=>fetch(`http://localhost:5000/layout/tesla/${params.id}`)
         },
         {
             path: "/layout/TOYOYTA",

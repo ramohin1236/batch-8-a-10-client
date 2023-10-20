@@ -10,14 +10,14 @@ const Bmw = () => {
     const [selectedBmw,setSelectedBmw]=useState([])
 
     const services= useLoaderData();
-    // console.log(services)
+   
     const { _id } = useParams();
     const paramsId = parseInt(_id)
-    // console.log(bmwcar)
+   
 
     useEffect(() => {
         const details = services.filter((srvc) => srvc.productBrand == "BMW");
-        // console.log(details);
+    
         setSelectedBmw(details)
     }, [services, paramsId])
     console.log(selectedBmw)
