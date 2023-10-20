@@ -19,6 +19,7 @@ import MarcedesDetails from "../Components/Brand/Marcedes/MarcedesDetails";
 import ToyotaDetails from './../Components/Brand/Toyota/ToyotaDetails';
 import HondaDetails from "../Components/Brand/Honda/HondaDetails";
 import YamahaDetails from "../Components/Brand/Yamaha/YamahaDetails";
+import ErrorPage from "../Components/Error/ErrorPage";
 
 
 
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
     {
       path: "/layout",
       element: <LayOut/>,
+      errorElement:<ErrorPage/>,
       children:[
         {
             path: "/layout",
@@ -42,7 +44,8 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/cart",
-            element:<Privateroute><Mycart/></Privateroute>
+            element:<Privateroute><Mycart/></Privateroute>,
+            loader: ()=>fetch('http://localhost:5000/buycar')
         },
         {
             path: "/layout/login",
@@ -64,7 +67,7 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/tesla",
-            element:<Tesla/>,
+            element:<Privateroute><Tesla/></Privateroute>,
             loader: ()=>fetch("http://localhost:5000/brand")
         },
         {
@@ -94,7 +97,7 @@ export const router = createBrowserRouter([
         },
         {
             path: "/layout/yamaha",
-            element:<Yamaha/>,
+            element:<Privateroute><Yamaha/></Privateroute>,
             loader: ()=>fetch("http://localhost:5000/brand")
 
         },

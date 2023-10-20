@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import AuthContext, { FirebaseAuthContext } from "../AuthContext/AuthContext";
+import { FirebaseAuthContext } from "../AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
 
@@ -72,6 +72,18 @@ const Login = () => {
                    
                   }))
             })
+            fetch('http://localhost:5000/user',{
+                method: "POST",
+                headers:{
+                   "content-type":"application/json"
+                },
+                body: JSON.stringify()
+              })
+              .then(res=>res.json())
+              .then(data=>{
+                console.log(data);
+              })
+            
 
         }
 

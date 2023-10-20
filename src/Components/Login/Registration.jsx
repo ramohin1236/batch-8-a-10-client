@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FirebaseAuthContext } from "../AuthContext/AuthContext";
@@ -18,6 +19,7 @@ const Registration = () => {
          const photo = form.photo.value;
          const password = form.password.value;
          console.log(name,email,photo,password)
+         const user={name,email,photo,password}
 
         //  password valiidationn
         if(password.length <6 ){
@@ -68,6 +70,19 @@ const Registration = () => {
            
           }))
             // ..
+          })
+
+
+          fetch('http://localhost:5000/user',{
+            method: "POST",
+            headers:{
+               "content-type":"application/json"
+            },
+            body: JSON.stringify(user)
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data);
           })
 
     }

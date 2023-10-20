@@ -28,6 +28,7 @@ const AuthContext = ({children}) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
+    
     // logOut 
     const logOut=()=>{
         setLoading(true)

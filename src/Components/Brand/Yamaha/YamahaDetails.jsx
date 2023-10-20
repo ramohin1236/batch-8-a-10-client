@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const YamahaDetails = () => {
@@ -7,6 +8,34 @@ const YamahaDetails = () => {
     const yamahaData= useLoaderData()
   
    const {productURL1,productURL2,productURL3,productName,productPrice,productType,productDescription}=yamahaData
+
+
+   const handleBuycar=(e)=>{
+    e.preventDefault()
+    fetch('http://localhost:5000/buycar',{
+        method: "POST",
+        headers:{
+           "content-type":"application/json"
+        },
+        body: JSON.stringify(yamahaData)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+
+        if(data.insertedId){
+            Swal(
+                Swal.fire(
+                    'Good job!',
+                    'User created',
+                    'success'
+                  )
+            )
+        }
+        console.log(data);
+      })
+    
+   }
+
 
     return (
         <div className="container mx-auto ">
@@ -35,7 +64,9 @@ const YamahaDetails = () => {
             <p className="text-blue-700 mt-4">Price : <span className="text-2xl  font-bold">{productPrice}</span> BDT</p>
             <p className="text-lg mt-8"> Description  : {productDescription}</p>
          </div>
-         <button className="btn btn-outline w-full mt-16">Add to cart</button>
+         <button
+         onClick={handleBuycar}
+         className="btn btn-outline w-full mt-16">Add to cart</button>
         </div>
       
         </div>

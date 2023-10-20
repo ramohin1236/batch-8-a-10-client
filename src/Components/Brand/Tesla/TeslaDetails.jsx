@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const TeslaDetails = () => {
@@ -7,7 +8,30 @@ const TeslaDetails = () => {
   
     const {productURL1,productURL2,productURL3,productName,productPrice,productType,productDescription}=teslaData
  
-
+    const handleBuycar=(e)=>{
+        e.preventDefault()
+        fetch('http://localhost:5000/buycar',{
+            method: "POST",
+            headers:{
+               "content-type":"application/json"
+            },
+            body: JSON.stringify(teslaData)
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data);
+            if(data.insertedId){
+                Swal(
+                    Swal.fire(
+                        'Good job!',
+                        'User created',
+                        'success'
+                      )
+                )
+            }
+          })
+        console.log("jfdk");
+       }
     return (
         <div className="container mx-auto ">
         <div className="border shadow-2xl m-12 p-12 bg-slate-200 rounded-3xl">
@@ -35,7 +59,9 @@ const TeslaDetails = () => {
             <p className="text-blue-700 mt-4">Price : <span className="text-2xl  font-bold">{productPrice}</span> BDT</p>
             <p className="text-lg mt-8"> Description  : {productDescription}</p>
          </div>
-         <button className="btn btn-outline w-full mt-16">Add to cart</button>
+         <button
+         onClick={handleBuycar}
+         className="btn btn-outline w-full mt-16">Add to cart</button>
         </div>
       
         </div>
