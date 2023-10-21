@@ -9,7 +9,7 @@ const ToyotaDetails = () => {
     const { productURL1, productURL2, productURL3, productName, productPrice, productType, productDescription } = toyotaData
     const handleBuycar = (e) => {
         e.preventDefault()
-        fetch('https://my-server-eykbfkwhc-ramohin1236.vercel.app/buycar', {
+        fetch('https://my-server-mnmquxk6n-ramohin1236.vercel.app/buycar', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

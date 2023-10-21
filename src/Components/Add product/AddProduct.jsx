@@ -17,7 +17,7 @@ const AddProduct = () => {
      console.log(info)
 
 
-     fetch('https://my-server-eykbfkwhc-ramohin1236.vercel.app/product',{
+     fetch('https://my-server-mnmquxk6n-ramohin1236.vercel.app/product',{
         method:'POST',
         headers: {
             'content-type' : 'application/json'
@@ -63,7 +63,7 @@ const AddProduct = () => {
       console.log(info)
  
  
-      fetch('https://my-server-eykbfkwhc-ramohin1236.vercel.app/brand',{
+      fetch('https://my-server-mnmquxk6n-ramohin1236.vercel.app/brand',{
          method:'POST',
          headers: {
              'content-type' : 'application/json'
