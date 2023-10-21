@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import {  useLoaderData } from "react-router-dom";
 
 
 
@@ -11,7 +11,7 @@ const Mycart = () => {
 
     const handleDelete=(id)=>{
           
-        fetch(`https://my-server-eykbfkwhc-ramohin1236.vercel.app/buycar/${id}`,{
+        fetch(`https://my-server-mnmquxk6n-ramohin1236.vercel.app/buycar/${id}`,{
             method: "DELETE"
            })
            .then(res=>res.json())
@@ -41,6 +41,10 @@ const Mycart = () => {
   <div className="card-body">
     <h2 className="card-title">{car.productName}</h2>
     <p>Congratulation!</p>
+    <div className="card-actions justify-end">
+    
+   
+    </div>
     <div className="card-actions justify-end">
       <button
       onClick={()=>handleDelete(car._id)}

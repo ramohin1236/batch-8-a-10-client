@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -7,13 +7,13 @@ const BmwDetails = () => {
 
     const bmwData= useLoaderData()
   
-   const {productURL1,productURL2,productURL3,productName,productPrice,productType,productDescription}=bmwData
+   const {_id,productURL1,productURL2,productURL3,productName,productPrice,productType,productDescription}=bmwData
 
 
 
    const handleBuycar=(e)=>{
     e.preventDefault()
-    fetch('https://my-server-eykbfkwhc-ramohin1236.vercel.app/buycar',{
+    fetch('https://my-server-mnmquxk6n-ramohin1236.vercel.app/buycar',{
         method: "POST",
         headers:{
            "content-type":"application/json"
@@ -63,6 +63,13 @@ const BmwDetails = () => {
             <p className="mt-4 text-blue-700">Type : <span className="text-2xl font-bold ">{productType}</span></p>
             <p className="text-blue-700 mt-4">Price : <span className="text-2xl  font-bold">{productPrice}</span> BDT</p>
             <p className="text-lg mt-8"> Description  : {productDescription}</p>
+         </div>
+         <div>
+         <Link to={`/layout/update/${_id}`}>
+    <button
+    //   onClick={()=>handleUpdate(car._id)}
+      className="btn btn-outline">Update</button>
+    </Link>
          </div>
          <button
          onClick={handleBuycar}

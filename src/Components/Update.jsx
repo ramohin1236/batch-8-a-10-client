@@ -1,50 +1,12 @@
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
+const Update = () => {
+    const updateCar = useLoaderData()
+    const {_id,productName,productBrand,productType,productPrice,productDescription,productRatings,productURL1,productURL2,productURL3,productURL4} =updateCar
+    console.log(updateCar)
 
-const AddProduct = () => {
-// add producct
-    const handleSubmit=(e)=>{
-       e.preventDefault()
-       const form= e.target;
-       const productName = form.productName.value;
-       const productBrand = form.brand.value;
-
-       const productURL1 = form.photo1.value;
-     
-
-       const info ={productName,productBrand,productURL1}
-
-     console.log(info)
-
-
-     fetch('https://my-server-mnmquxk6n-ramohin1236.vercel.app/product',{
-        method:'POST',
-        headers: {
-            'content-type' : 'application/json'
-        },
-        body: JSON.stringify(info)
-     })
-     .then(res=>res.json())
-     .then(data=>{
-        console.log(data);
-        if(data.insertedId){
-            Swal.fire({
-                title: 'Product Successfully Added!',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
-        }
-      
-     })
-
-    }
-
-    // add brand product
-    const handleBrandSubmit=(e)=>{
+    const handleBrandUpdateSubmit=(e)=>{
         e.preventDefault()
         const form= e.target;
         const productName = form.productName.value;
@@ -58,25 +20,25 @@ const AddProduct = () => {
         const productURL3 = form.photo3.value;
         const productURL4 = form.photo4.value;
  
-        const info ={productName,productBrand,productType,productPrice,productDescription,productRatings,productURL1,productURL2,productURL3,productURL4}
+        const updateBrand ={productName,productBrand,productType,productPrice,productDescription,productRatings,productURL1,productURL2,productURL3,productURL4}
  
-      console.log(info)
+      console.log(updateBrand)
  
  
-      fetch('https://my-server-mnmquxk6n-ramohin1236.vercel.app/brand',{
-         method:'POST',
+      fetch(`https://my-server-mnmquxk6n-ramohin1236.vercel.app/brand/${_id}`,{
+         method:'PUT',
          headers: {
              'content-type' : 'application/json'
          },
-         body: JSON.stringify(info)
+         body: JSON.stringify(updateBrand)
       })
       .then(res=>res.json())
       .then(data=>{
          console.log(data);
-         if(data.insertedId){
+         if(data.modifiedCount > 0){
              Swal.fire({
                 icon: "success",
-                 title: 'Brand Product Successfully Added!',
+                 title: 'Brand Product Update Successfully!',
                  showClass: {
                    popup: 'animate__animated animate__fadeInDown'
                  },
@@ -90,10 +52,11 @@ const AddProduct = () => {
       })
  
      }
+
     return (
-     <div className="bg-slate-100">
-        <h1 className="text-4xl font-bold text-center mt-8 mb-8">Service Product Added </h1>
-         <form  className="container mx-auto p-6" onSubmit={handleSubmit}>
+        <div>
+            <h2 className="text-4xl font-bold text-center mt-20 mb-8">Update brand Product</h2>
+        <form  className="container mx-auto p-6" onSubmit={handleBrandUpdateSubmit}>
               <div>
             {/* name and brand input here */}
             <div className="md:flex justify-evenly max-sm:ml-4 max-sm:mr-4 ">
@@ -106,6 +69,7 @@ const AddProduct = () => {
                             <span>Product</span>
                             <input type="text" 
                             name="productName"
+                            defaultValue= {productName}
                             placeholder="Name here..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -119,70 +83,7 @@ const AddProduct = () => {
                             <span>Brand</span>
                             <input type="text" 
                             name="brand"
-                            placeholder="Brand here..." className="input input-bordered lg:w-96" />
-                        </label>
-                    </div>
-                </div>
-            </div>
-            
-           
-            {/* Phot URL here */}
-            <div className=" max-sm:ml-4 max-sm:mr-4 w-full">
-                <div>
-                    <div className="form-control md:ml-28 lg:ml-52">
-                        <label className="label">
-                            <span className="label-text">Photo-1</span>
-                        </label>
-                        <label className="input-group input-group-vertical md:w-[500px] lg:w-[700px]">
-                            <span>URL-1</span>
-                            <input type="text" 
-                            name="photo1"
-                            placeholder="Product picture..." className="input input-bordered md:w-[500px] lg:w-[700px] " />
-                        </label>
-                    </div>
-                </div>
-                <div>
-                   
-                </div>
-              
-            </div>
-            
-        </div>
-     <div className="text-center mt-10">
-     <input className="w-96  btn btn-outline" type="submit" value="submit" />
-     </div>
-         </form>
-
-
-         
-
-        <h2 className="text-4xl font-bold text-center mt-20 mb-8">Add brand Product</h2>
-        <form  className="container mx-auto p-6" onSubmit={handleBrandSubmit}>
-              <div>
-            {/* name and brand input here */}
-            <div className="md:flex justify-evenly max-sm:ml-4 max-sm:mr-4 ">
-                <div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Product Name</span>
-                        </label>
-                        <label className="input-group input-group-vertical">
-                            <span>Product</span>
-                            <input type="text" 
-                            name="productName"
-                            placeholder="Name here..." className="input input-bordered lg:w-96" />
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Brand Name</span>
-                        </label>
-                        <label className="input-group input-group-vertical">
-                            <span>Brand</span>
-                            <input type="text" 
-                            name="brand"
+                            defaultValue={productBrand}
                             placeholder="Brand here..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -199,6 +100,7 @@ const AddProduct = () => {
                             <span>Type</span>
                             <input type="text" 
                             name="type"
+                            defaultValue={productType}
                             placeholder="Product type..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -211,6 +113,7 @@ const AddProduct = () => {
                         <label className="input-group input-group-vertical">
                             <span>BDT</span>
                             <input type="text"
+                            defaultValue={productPrice}
                             name="price"
                             placeholder="Enter product Price..." className="input input-bordered lg:w-96" />
                         </label>
@@ -227,6 +130,7 @@ const AddProduct = () => {
                         <label className="input-group input-group-vertical">
                             <span>Description</span>
                             <input type="text" 
+                            defaultValue={productDescription}
                             name="description"
                             placeholder="Product cescription..." className="input input-bordered lg:w-96" />
                         </label>
@@ -241,6 +145,7 @@ const AddProduct = () => {
                             <span>Ratings</span>
                             <input type="text" 
                             name="ratings"
+                            defaultValue={productRatings}
                             placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -257,6 +162,7 @@ const AddProduct = () => {
                             <span>URL-1</span>
                             <input type="text" 
                             name="photo1"
+                            defaultValue={productURL1}
                             placeholder="Product picture..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -270,6 +176,7 @@ const AddProduct = () => {
                             <span>URL-2</span>
                             <input type="text" 
                               name="photo2"
+                              defaultValue={productURL2}
                             placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -286,6 +193,7 @@ const AddProduct = () => {
                             <span>URL-3</span>
                             <input type="text" 
                              name="photo3"
+                             defaultValue={productURL3}
                             placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -297,6 +205,7 @@ const AddProduct = () => {
                             <span>URL-4</span>
                             <input type="text" 
                              name="photo4"
+                             defaultValue={productURL4}
                             placeholder="Enter product Ratings..." className="input input-bordered lg:w-96" />
                         </label>
                     </div>
@@ -304,11 +213,11 @@ const AddProduct = () => {
                 </div>
         </div>
      <div className="text-center mt-10">
-     <input className="w-96  btn btn-outline" type="submit" value="submit" />
+     <input className="w-96  btn btn-outline" type="submit" value="Update" />
      </div>
          </form>
-     </div>
+        </div>
     );
 };
 
-export default AddProduct;
+export default Update;

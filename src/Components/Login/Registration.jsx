@@ -73,7 +73,7 @@ const Registration = () => {
           })
 
 
-          fetch('https://my-server-eykbfkwhc-ramohin1236.vercel.app/user',{
+          fetch('https://my-server-mnmquxk6n-ramohin1236.vercel.app/user',{
             method: "POST",
             headers:{
                "content-type":"application/json"
